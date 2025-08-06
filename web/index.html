@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VoteBoost NG</title>
+  <style> body { font-family: Arial; text-align: center; margin-top: 50px; } </style>
+</head>
+<body>
+  <h1>🗳️ PMEVACS</h1>
+  <p>Check your voting motivation score</p>
+  <input type="number" id="age" placeholder="Age" />
+  <button onclick="predict()">Check Score</button>
+  <div id="result"></div>
+
+  <script>
+    async function predict() {
+      const age = document.getElementById('age').value;
+      const res = await fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ age: parseInt(age), gender: 'M', location: 'Lagos', education: 'University', employment: 'Yes', voter_registered: 1 })
+      });
+      const data = await res.json();
+      document.getElementById('result').innerHTML = `
+        <p>Likelihood: ${(data.voting_likelihood * 100).toFixed(1)}%</p>
+        <p>Risk: <strong>${data.apathy_risk}</strong></p>
+        <p>💡 ${data.recommendation}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

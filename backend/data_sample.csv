@@ -1,0 +1,6 @@
+age,gender,location,education,employment,voter_registered,social_media_use,political_interest,previous_voted
+22,M,Lagos,University,Yes,1,High,Low,0
+25,F,Kano,Polytechnic,No,1,Medium,Medium,1
+19,M,Ibadan,Secondary,No,0,Low,Low,0
+30,F,Enugu,Degree,Yes,1,High,High,1
+21,F,Abuja,University,Yes,1,High,Medium,1
